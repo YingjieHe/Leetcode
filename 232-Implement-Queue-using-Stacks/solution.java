@@ -3,13 +3,9 @@ class MyQueue {
     Stack<Integer> s1 = new Stack<Integer>();
     Stack<Integer> s2 = new Stack<Integer>();
     public void push(int x) {
-        while(!s1.isEmpty()){
-            s2.push(s1.pop());
-        }
+        while(!s1.isEmpty()) s2.push(s1.pop());
         s1.push(x);
-        while(!s2.isEmpty()){
-            s1.push(s2.pop());
-        }
+        while(!s2.isEmpty()) s1.push(s2.pop());
     }
 
     // Removes the element from in front of queue.
