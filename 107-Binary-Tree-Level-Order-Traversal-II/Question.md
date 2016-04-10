@@ -57,6 +57,6 @@ The above binary tree is serialized as `"{1,2,3,#,#,4,#,#,5}"`.</div>
 
 <div>
 
-<div id="similar" class="btn btn-xs btn-warning">Show Similar Problems</div>
+<div id="similar" class="btn btn-xs btn-warning">Hide Similar Problems</div>
 
-<span class="hidebutton">[(E) Binary Tree Level Order Traversal](/problems/binary-tree-level-order-traversal/)</span></div>
+<span class="hidebutton" style="display: inline;">[(E) Binary Tree Level Order Traversal](/problems/binary-tree-level-order-traversal/)</span></div>
