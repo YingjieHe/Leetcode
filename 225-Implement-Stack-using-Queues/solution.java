@@ -4,15 +4,14 @@ class MyStack {
     public void push(int x) {
         int len = q.size();
         q.offer(x);
-        while(len > 0){
-            len--;
+        for(int i = 0; i < len; i++){
             q.offer(q.poll());
         }
     }
 
     // Removes the element on top of the stack.
     public void pop() {
-        q.poll();
+        q.remove();
     }
 
     // Get the top element.
