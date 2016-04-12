@@ -29,6 +29,6 @@ The array may contain duplicates.
 
 <div>
 
-<div id="similar" class="btn btn-xs btn-warning">Show Similar Problems</div>
+<div id="similar" class="btn btn-xs btn-warning">Hide Similar Problems</div>
 
-<span class="hidebutton">[(M) Find Minimum in Rotated Sorted Array](/problems/find-minimum-in-rotated-sorted-array/)</span></div>
+<span class="hidebutton" style="display: inline;">[(M) Find Minimum in Rotated Sorted Array](/problems/find-minimum-in-rotated-sorted-array/)</span></div>
