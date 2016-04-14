@@ -12,8 +12,9 @@ public class Solution {
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode fast = dummy;
-        for(int i = 0; i <= n; i++){
+        while(fast != null && n >= 0){
             fast = fast.next;
+            n--;
         }
         ListNode slow = dummy;
         while(fast != null){
