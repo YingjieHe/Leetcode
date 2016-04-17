@@ -8,9 +8,9 @@
  */
 public class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
+        if(lists == null || lists.length == 0) return null;
         ListNode dummy = new ListNode(0);
         ListNode head = dummy;
-        if(lists == null || lists.length == 0) return dummy.next;
         PriorityQueue<ListNode> q = new PriorityQueue<ListNode>(lists.length, new Comparator<ListNode>(){
             public int compare(ListNode o1, ListNode o2){
                 return o1.val - o2.val;
@@ -18,14 +18,12 @@ public class Solution {
         });
         for(ListNode i : lists){
             if(i != null)
-                q.add(i);
+                q.offer(i);
         }
         while(!q.isEmpty()){
             head.next = q.poll();
             head = head.next;
-            if(head.next != null){
-                q.add(head.next);
-            }
+            if(head.next != null) q.offer(head.next);
         }
         return dummy.next;
     }
