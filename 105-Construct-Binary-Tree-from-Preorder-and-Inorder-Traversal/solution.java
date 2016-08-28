@@ -9,20 +9,21 @@
  */
 public class Solution {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        return dfs(inorder, preorder, 0, inorder.length - 1, 0, preorder.length - 1);
+        return dfs(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
     }
-    public TreeNode dfs(int[] in, int[] pre, int is, int ie, int ps, int pe){
+    
+    private TreeNode dfs(int[] preorder, int ps, int pe, int[] inorder, int is, int ie) {
         if(ps > pe || is > ie) return null;
-        TreeNode root = new TreeNode(pre[ps]);
+        TreeNode root = new TreeNode(preorder[ps]);
         int index = 0;
-        for(int i = is; i <= ie; i++){
-            if(in[i] == pre[ps]){
+        for(int i = is; i <= ie; i++) {
+            if(preorder[ps] == inorder[i]) {
                 index = i;
                 break;
             }
         }
-        root.left = dfs(in, pre, is, index - 1, ps + 1, ps + index - is);
-        root.right = dfs(in, pre, index + 1, ie, pe + index - ie + 1, pe);
+        root.left = dfs(preorder, ps + 1, ps + index - is, inorder, is, index - 1);
+        root.right = dfs(preorder, ps + index - is + 1, pe, inorder, index + 1, ie);
         return root;
     }
 }
