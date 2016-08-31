@@ -14,7 +14,7 @@ public class Solution {
             return;
         }
         for(int i = 0; i < nums.length; i++) {
-            if(visited[i] || (i != 0 && nums[i] == nums[i - 1] && visited[i - 1])) continue;
+            if(visited[i] || (i != 0 && nums[i] == nums[i - 1] && !visited[i - 1])) continue;
             visited[i] = true;
             list.add(nums[i]);
             dfs(res, nums, list, visited);
