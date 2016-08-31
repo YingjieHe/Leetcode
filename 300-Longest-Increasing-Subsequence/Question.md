@@ -23,12 +23,6 @@ Special thanks to [@pbrother](https://leetcode.com/discuss/user/pbrother) for ad
 
 <div>
 
-<div id="company_tags" class="btn btn-xs btn-warning">Show Company Tags</div>
-
-<span class="hidebutton">[Microsoft](/company/microsoft/)</span></div>
-
-<div>
-
 <div id="tags" class="btn btn-xs btn-warning">Show Tags</div>
 
 <span class="hidebutton">[Dynamic Programming](/tag/dynamic-programming/) [Binary Search](/tag/binary-search/)</span></div>
@@ -37,4 +31,4 @@ Special thanks to [@pbrother](https://leetcode.com/discuss/user/pbrother) for ad
 
 <div id="similar" class="btn btn-xs btn-warning">Show Similar Problems</div>
 
-<span class="hidebutton">[(M) Increasing Triplet Subsequence](/problems/increasing-triplet-subsequence/)</span></div>
+<span class="hidebutton">[(M) Increasing Triplet Subsequence](/problems/increasing-triplet-subsequence/) [(H) Russian Doll Envelopes](/problems/russian-doll-envelopes/)</span></div>
