@@ -3,7 +3,6 @@ public class Solution {
         int[] indegree = new int[numCourses];
         Map<Integer, List<Integer>> map = new HashMap<>();
         for(int[] edge : prerequisites) {
-
             if(!map.containsKey(edge[1])) map.put(edge[1], new ArrayList<Integer>());
             map.get(edge[1]).add(edge[0]);
             indegree[edge[0]]++;
