@@ -1,10 +1,10 @@
 public class LRUCache {
-    class Node {
-        int value;
+    class node {
         int key;
-        Node pre;
-        Node next;
-        public Node(int key, int value) {
+        int value;
+        node pre;
+        node next;
+        public node(int key, int value) {
             this.key = key;
             this.value = value;
             pre = null;
@@ -12,57 +12,53 @@ public class LRUCache {
         }
     }
     
-    Map<Integer, Node> map;
-    Node head;
-    Node tail;
-    int count;
+    public void addToHead(node n) {
+        n.next = head.next;
+        n.next.pre = n;
+        n.pre = head;
+        head.next = n;
+    }
     
-    private void delete(Node n) {
+    public void delete(node n) {
         n.pre.next = n.next;
         n.next.pre = n.pre;
     }
     
-    private void addToHead(Node n) {
-        n.next = head.next;
-        n.pre = head;
-        head.next.pre = n;
-        head.next = n;
-    }
-    
+    private int count;
+    private Map<Integer, node> map;
+    node head;
+    node tail;
     public LRUCache(int capacity) {
-        map = new HashMap<Integer, Node>();
-        head = new Node(0, 0);
-        tail = new Node(0, 0);
+        count = capacity;
+        map = new HashMap<>();
+        head = new node(0, 0);
+        tail = new node(0, 0);
         head.next = tail;
         tail.pre = head;
-        count = capacity;
     }
     
     public int get(int key) {
         if(map.containsKey(key)) {
-            Node temp = map.get(key);
-            delete(temp);
-            addToHead(temp);
-            return temp.value;
+            node n = map.get(key);
+            delete(n);
+            addToHead(n);
+            return n.value;
         }
-        else {
-            return -1;
-        }
+        else return -1;
     }
     
     public void set(int key, int value) {
         if(map.containsKey(key)) {
-            Node temp = map.get(key);
-            temp.value = value;
-            map.put(key, temp);
-            delete(temp);
-            addToHead(temp);
-            return;
+            node n = map.get(key);
+            n.value = value;
+            map.put(key, n);
+            delete(n);
+            addToHead(n);
         }
         else {
-            Node temp = new Node(key, value);
-            map.put(key, temp);
-            addToHead(temp);
+            node n = new node(key, value);
+            map.put(key, n);
+            addToHead(n);
             count--;
             if(count < 0) {
                 map.remove(tail.pre.key);
