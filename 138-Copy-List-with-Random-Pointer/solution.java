@@ -9,8 +9,9 @@
 public class Solution {
     public RandomListNode copyRandomList(RandomListNode head) {
         if(head == null) return null;
-        RandomListNode temp = head, next;
-        while(temp != null){
+        RandomListNode temp, next;
+        temp = head;
+        while(temp != null) {
             next = temp.next;
             RandomListNode copy = new RandomListNode(temp.label);
             temp.next = copy;
@@ -18,19 +19,20 @@ public class Solution {
             temp = next;
         }
         temp = head;
-        while(temp != null){
-            if(temp.random != null)
+        while(temp != null) {
+            if(temp.random != null) {
                 temp.next.random = temp.random.next;
+            }
             temp = temp.next.next;
         }
-        temp = head;
         RandomListNode dummy = new RandomListNode(0);
+        temp = head;
         RandomListNode copy = dummy;
-        while(temp != null){
+        while(temp != null) {
             next = temp.next.next;
             copy.next = temp.next;
-            copy = copy.next;
             temp.next = next;
+            copy = copy.next;
             temp = next;
         }
         return dummy.next;
