@@ -5,15 +5,15 @@ public class MedianFinder {
     public void addNum(int num) {
         max.offer(num);
         min.offer(max.poll());
-        if(max.size() < min.size()) {
+        if(min.size() > max.size()) {
             max.offer(min.poll());
         }
     }
 
     // Returns the median of current data stream
     public double findMedian() {
-        if(min.size() == max.size()) return (min.peek() + max.peek()) / 2.0;
-        else return max.peek();
+        if(max.size() == min.size()) return (max.peek() + min.peek()) / 2.0;
+        else return (double)max.peek();
     }
 };
 
