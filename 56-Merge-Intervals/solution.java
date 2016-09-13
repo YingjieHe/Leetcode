@@ -18,14 +18,14 @@ public class Solution {
         List<Interval> res = new ArrayList<>();
         Interval prev = null;
         for(Interval cur : intervals) {
-            if(prev == null || cur.start > prev.end) {
+            if(prev == null || prev.end < cur.start) {
                 res.add(cur);
                 prev = cur;
             }
-            else if(cur.end > prev.end) {
-                prev.end = cur.end;
+            else{
+                prev.end = Math.max(prev.end, cur.end);
             }
-        } 
+        }
         return res;
     }
 }
