@@ -1,6 +1,5 @@
 public class Solution {
     public int findDuplicate(int[] nums) {
-        if(nums == null || nums.length <= 1) return -1;
         int slow = nums[0];
         int fast = nums[nums[0]];
         while(slow != fast) {
@@ -9,8 +8,8 @@ public class Solution {
         }
         fast = 0;
         while(slow != fast) {
-            fast = nums[fast];
             slow = nums[slow];
+            fast = nums[fast];
         }
         return slow;
     }
