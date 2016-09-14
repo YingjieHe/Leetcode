@@ -17,12 +17,13 @@ public class Solution {
     
     private void dfs(List<List<Integer>> res, List<Integer> list, TreeNode root, int sum) {
         if(root == null) return;
-        list.add(root.val);
-        if(root.left == null && root.right == null && sum - root.val == 0) {
+        if(root.left == null && root.right == null && sum == root.val) {
+            list.add(root.val);
             res.add(new ArrayList<Integer>(list));
             list.remove(list.size() - 1);
             return;
         }
+        list.add(root.val);
         dfs(res, list, root.left, sum - root.val);
         dfs(res, list, root.right, sum - root.val);
         list.remove(list.size() - 1);
