@@ -8,23 +8,23 @@
  * }
  */
 public class Codec {
-    private static final String spliter = ",";
-    private static final String NN = "X";
+    private String spliter = ",";
+    private String end = "#";
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
         StringBuilder sb = new StringBuilder();
         dfs(root, sb);
         return sb.toString();
     }
+    
     private void dfs(TreeNode root, StringBuilder sb) {
         if(root == null) {
-            sb.append(NN).append(spliter);
+            sb.append(end).append(spliter);
+            return;
         }
-        else {
-            sb.append(root.val).append(spliter);
-            dfs(root.left, sb);
-            dfs(root.right, sb);
-        }
+        sb.append(root.val + spliter);
+        dfs(root.left, sb);
+        dfs(root.right, sb);
     }
 
     // Decodes your encoded data to tree.
@@ -35,12 +35,12 @@ public class Codec {
     }
     
     private TreeNode buildtree(Queue<String> q) {
-        String s = q.poll();
-        if(s.equals(NN)) return null;
-        TreeNode node = new TreeNode(Integer.valueOf(s));
-        node.left = buildtree(q);
-        node.right = buildtree(q);
-        return node;
+        String val = q.poll();
+        if(val.equals(end)) return null;
+        TreeNode root = new TreeNode(Integer.parseInt(val));
+        root.left = buildtree(q);
+        root.right = buildtree(q);
+        return root;
     }
 }
 
