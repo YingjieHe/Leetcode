@@ -4,7 +4,7 @@ public class Solution {
         int preYes = 0;
         for(int i : nums) {
             int temp = preNo;
-            preNo = Math.max(preNo, preYes);
+            preNo = Math.max(preYes, preNo);
             preYes = temp + i;
         }
         return Math.max(preNo, preYes);
