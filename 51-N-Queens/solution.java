@@ -14,18 +14,18 @@ public class Solution {
     
     private void dfs(char[][] board, List<List<String>> res, int col) {
         if(col == board.length) {
-            List<String> list = new LinkedList<String>();
-            for(int i = 0; i < board.length; i++) {
-                list.add(String.valueOf(board[i]));
+            List<String> list = new ArrayList<>();
+            for(char[] c : board) {
+                list.add(String.valueOf(c));
             }
             res.add(list);
             return;
         }
-        for(int row = 0; row < board.length; row++) {
-            if(valid(board, row, col)) {
-                board[row][col] = 'Q';
+        for(int i = 0; i < board[0].length; i++) {
+            if(valid(board, i, col)) {
+                board[i][col] = 'Q';
                 dfs(board, res, col + 1);
-                board[row][col] = '.';
+                board[i][col] = '.';
             }
         }
     }
@@ -33,7 +33,7 @@ public class Solution {
     private boolean valid(char[][] board, int i, int j) {
         for(int x = 0; x < board.length; x++) {
             for(int y = 0; y < j; y++) {
-                if(board[x][y] == 'Q' && (x + j == y + i || x + y == i + j || x == i)) return false;
+                if(board[x][y] == 'Q' && (x == i || x + j == y + i || x + y == i + j)) return false;
             }
         }
         return true;
