@@ -1,7 +1,7 @@
 public class Solution {
     public int rob(int[] nums) {
-        int preNo = 0;
         int preYes = 0;
+        int preNo = 0;
         for(int i : nums) {
             int temp = preNo;
             preNo = Math.max(preYes, preNo);
