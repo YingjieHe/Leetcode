@@ -11,10 +11,10 @@ public class Solution {
         if(head == null || head.next == null) return head;
         ListNode dummy = null;
         while(head != null) {
-            ListNode temp = head.next;
+            ListNode next = head.next;
             head.next = dummy;
             dummy = head;
-            head = temp;
+            head = next;
         }
         return dummy;
     }
