@@ -15,12 +15,12 @@ public class Solution {
     public TreeNode dfs(int[] preorder, int ps, int pe, int[] inorder, int is, int ie) {
         if(ps > pe || is > ie) return null;
         TreeNode root = new TreeNode(preorder[ps]);
-        int i = is;
-        for(; i <= ie; i++) {
+        int i;
+        for(i = is; i < ie; i++) {
             if(inorder[i] == preorder[ps]) break;
         }
-        root.left = dfs(preorder, ps + 1, ps + i - is, inorder, is, i - 1);
-        root.right = dfs(preorder, ps + i - is + 1, pe, inorder, i + 1, ie);
+        root.left = dfs(preorder, ps + 1, ps + i -is, inorder, is, i - 1);
+        root.right = dfs(preorder, ps + i -is + 1, pe, inorder, i + 1, ie);
         return root;
     }
 }
