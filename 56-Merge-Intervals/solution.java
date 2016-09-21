@@ -9,23 +9,24 @@
  */
 public class Solution {
     public List<Interval> merge(List<Interval> intervals) {
+        List<Interval> list = new ArrayList<>();
+        if(intervals == null || intervals.size() == 0) return list;
         Collections.sort(intervals, new Comparator<Interval>(){
             public int compare(Interval a, Interval b) {
                 return a.start - b.start;
             }
         });
         
-        List<Interval> res = new ArrayList<>();
-        Interval prev = null;
+        Interval pre = null;
         for(Interval cur : intervals) {
-            if(prev == null || prev.end < cur.start) {
-                res.add(cur);
-                prev = cur;
+            if(pre == null || pre.end < cur.start) {
+                list.add(cur);
+                pre = cur;
             }
-            else{
-                prev.end = Math.max(prev.end, cur.end);
+            else {
+                pre.end = Math.max(pre.end, cur.end);
             }
         }
-        return res;
+        return list;
     }
 }
