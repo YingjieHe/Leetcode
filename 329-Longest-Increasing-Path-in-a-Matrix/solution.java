@@ -20,7 +20,7 @@ public class Solution {
         for(int[] dir : dirs) {
             int x = i + dir[0];
             int y = j + dir[1];
-            if(x < 0 || x >= matrix.length || y < 0 || y >= matrix[0].length || matrix[x][y] <= matrix[i][j]) continue;
+            if(x < 0 || x >= matrix.length || y < 0 || y >= matrix[0].length || matrix[x][y] >= matrix[i][j]) continue;
             max = Math.max(max, dfs(matrix, dp, x, y) + 1);
         }
         dp[i][j] = max;
