@@ -3,17 +3,17 @@ public class MedianFinder {
     PriorityQueue<Integer> min = new PriorityQueue<>();
     // Adds a number into the data structure.
     public void addNum(int num) {
-        max.offer(num);
-        min.offer(max.poll());
-        if(min.size() > max.size()) {
-            max.offer(min.poll());
+        min.offer(num);
+        max.offer(min.poll());
+        if(min.size() < max.size()) {
+            min.offer(max.poll());
         }
     }
 
     // Returns the median of current data stream
     public double findMedian() {
         if(max.size() == min.size()) return (max.peek() + min.peek()) / 2.0;
-        else return (double)max.peek();
+        else return (double)min.peek();
     }
 };
 
