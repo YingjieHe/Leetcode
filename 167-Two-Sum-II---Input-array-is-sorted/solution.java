@@ -1,20 +1,17 @@
 public class Solution {
     public int[] twoSum(int[] numbers, int target) {
-        if(numbers.length==0 || numbers==null) return new int[2];
-        int[] result=new int[2];
-        int start=1;
-        int end=numbers.length;
-        while(start<end)
-        {
-            if(numbers[start-1]+numbers[end-1]==target)
-            {
-                result[0]=start;
-                result[1]=end;
-                return result;
+        int[] res = new int[2];
+        int left = 0, right = numbers.length - 1;
+        while(left < right) {
+            int mid = numbers[left] + numbers[right];
+            if(mid == target) {
+                res[0] = left + 1;
+                res[1] = right + 1;
+                break;
             }
-            else if(numbers[start-1]+numbers[end-1]<target) start++;
-            else end--;
+            else if(mid < target) left++;
+            else right--;
         }
-        return null;
+        return res;
     }
 }
