@@ -2,45 +2,31 @@ public class Solution {
     public int calculate(String s) {
         if(s == null || s.length() == 0) return 0;
         Stack<Integer> stack = new Stack<>();
-        int len = s.length();
-        int num = 0;
         char op = '+';
-        
-        for(int i = 0; i < len; i++) {
-            char c = s.charAt(i);
-            if(c == '(') {
+        int num = 0;
+        for(int i = 0; i < s.length(); i++) {
+            if(s.charAt(i) == '(') {
                 int start = i;
                 int count = 0;
                 do {
-                    c = s.charAt(i);
-                    if(c == '(') count++;
-                    else if(c == ')') count--;
+                    if(s.charAt(i) == '(') count++;
+                    else if(s.charAt(i) == ')') count--;
                     i++;
                 }
                 while(count != 0);
-                num = calculate(s.substring(start, i - 1));
+                num = calculate(s.substring(start + 1, i - 1));
             }
-            if(i == len) i--;
-            c = s.charAt(i);
-            if(Character.isDigit(c)) {
-                num = num * 10 + (c - '0');
+            if(i == s.length()) i--;
+            if(Character.isDigit(s.charAt(i))) {
+                num = num * 10 + s.charAt(i) - '0';
             }
-            
-            if((!Character.isDigit(c) && c !=' ') || i == len - 1) {
-                if(op == '+') {
-                    stack.push(num);
-                }
-                if(op == '-') {
-                    stack.push(-num);
-                }
-                if(op == '*') {
-                    stack.push(stack.pop() * num);
-                }
-                if(op == '/') {
-                    stack.push(stack.pop() / num);
-                }
-                op = c;
+            if(!Character.isDigit(s.charAt(i)) && s.charAt(i) != ' ' || i == s.length() - 1) {
+                if(op == '+') stack.push(num);
+                else if(op == '-') stack.push(-num);
+                else if(op == '*') stack.push(stack.pop() * num);
+                else if(op == '/') stack.push(stack.pop() / num);
                 num = 0;
+                op = s.charAt(i);
             }
         }
         
