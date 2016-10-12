@@ -20,6 +20,7 @@ public class Solution {
                 if(extra-- > 0) sb.append(" ");
                 sb.append(words[j]);
             }
+            
             int remain = maxWidth - sb.length();
             while(remain-- > 0) sb.append(" ");
             res.add(sb.toString());
