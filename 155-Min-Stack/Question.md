@@ -9,6 +9,18 @@ Design a stack that supports push, pop, top, and retrieving the minimum element 
 *   top() -- Get the top element.
 *   getMin() -- Retrieve the minimum element in the stack.
 
+**Example:**  
+
+<pre>MinStack minStack = new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+minStack.getMin();   --> Returns -3.
+minStack.pop();
+minStack.top();      --> Returns 0.
+minStack.getMin();   --> Returns -2.
+</pre>
+
 <div>
 
 [Subscribe](/subscribe/) to see which companies asked this question
